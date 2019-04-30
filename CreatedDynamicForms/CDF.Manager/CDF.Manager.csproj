@@ -42,7 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Abstract\IFieldManager.cs" />
+    <Compile Include="Abstract\IFormManager.cs" />
+    <Compile Include="Abstract\IUserManager.cs" />
+    <Compile Include="Concrete\FieldManager.cs" />
+    <Compile Include="Concrete\FormManager.cs" />
+    <Compile Include="Concrete\UserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -42,7 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Abstract\IFieldDAL.cs" />
+    <Compile Include="Abstract\IFormDAL.cs" />
+    <Compile Include="Abstract\IUserDAL.cs" />
+    <Compile Include="Concrete\EFContext.cs" />
+    <Compile Include="Concrete\FieldDAL.cs" />
+    <Compile Include="Concrete\FormDAL.cs" />
+    <Compile Include="Concrete\UserDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
