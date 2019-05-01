@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{ED19EA6D-831E-4B0E-AD67-475E8D1CA10E}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <RootNamespace>CDF.Manager</RootNamespace>
     <AssemblyName>CDF.Manager</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -52,6 +55,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CDF.DAL\CDF.DAL.csproj">
+      <Project>{4c7e4b1b-4cf7-4b16-8429-c0ae5da9513a}</Project>
+      <Name>CDF.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CDF.Entities\CDF.Entities.csproj">
+      <Project>{10bd2045-1cc6-41e4-95d1-c9348f8efa5d}</Project>
+      <Name>CDF.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

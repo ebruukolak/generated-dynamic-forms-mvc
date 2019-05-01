@@ -1,10 +1,12 @@
-﻿using System;
+﻿using CDF.Entities;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace CDF.DAL.Abstract
 {
-   public class IUserDAL
+   public interface IUserDAL
    {
+      User GetUser(User user);
    }
 }

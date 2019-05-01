@@ -6,7 +6,7 @@ namespace CDF.Entities
 {
    public class Form
    {
-      public int ID { get; set; }
+      public int Id { get; set; }
       public string name { get; set; }
       public string description { get; set; }
       public DateTime createdAt { get; set; }

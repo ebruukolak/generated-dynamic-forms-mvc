@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace CDF.Test
+namespace test
 {
    [TestClass]
    public class UnitTest1
