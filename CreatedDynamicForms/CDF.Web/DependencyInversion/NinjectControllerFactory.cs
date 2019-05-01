@@ -24,7 +24,7 @@ namespace CDF.Web.DependencyInversion
       {
          kernel.Bind<IUserManager>().To<UserManager>().WithConstructorArgument("userDAL", new UserDAL());
          kernel.Bind<IFormManager>().To<FormManager>().WithConstructorArgument("formDAL", new FormDAL());
-         //kernel.Bind<IFieldManager>().To<FieldManager>().WithConstructorArgument("fielDal", new FieldDAL());         
+         kernel.Bind<IFieldManager>().To<FieldManager>().WithConstructorArgument("fieldDAL", new FieldDAL());
       }
       protected override IController GetControllerInstance(RequestContext requestContext, Type controllerType)
       {

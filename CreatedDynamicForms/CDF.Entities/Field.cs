@@ -10,5 +10,6 @@ namespace CDF.Entities
       public bool required { get; set; }
       public string name { get; set; }
       public string dataType { get; set; }
+      public int formId { get; set; }
    }
 }

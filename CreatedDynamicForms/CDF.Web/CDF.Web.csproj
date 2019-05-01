@@ -213,6 +213,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Forms\FormList.cshtml" />
+    <Content Include="Views\Forms\CreateForm.cshtml" />
+    <Content Include="Views\Forms\GetForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

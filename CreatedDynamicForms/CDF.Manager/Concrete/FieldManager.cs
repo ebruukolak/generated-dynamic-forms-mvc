@@ -1,4 +1,5 @@
-﻿using CDF.Entities;
+﻿using CDF.DAL.Abstract;
+using CDF.Entities;
 using CDF.Manager.Abstract;
 using System;
 using System.Collections.Generic;
@@ -8,9 +9,20 @@ namespace CDF.Manager.Concrete
 {
    public class FieldManager : IFieldManager
    {
+      IFieldDAL fieldDAL;
+      public FieldManager(IFieldDAL fieldDAL)
+      {
+         this.fieldDAL = fieldDAL;
+      }
       public void AddField(Field field)
       {
-         throw new NotImplementedException();
+         fieldDAL.AddField(field);
+
+      }
+
+      public List<Field> GetByFromId(int id)
+      {
+         return fieldDAL.GetByFromId(id);
       }
    }
 }

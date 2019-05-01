@@ -2,6 +2,7 @@
 using CDF.Entities;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace CDF.DAL.Concrete
@@ -15,6 +16,14 @@ namespace CDF.DAL.Concrete
             var f=context.Fields.Add(field);
             context.SaveChanges();
             return f;
+         }
+      }
+
+      public List<Field> GetByFromId(int id)
+      {
+         using (var context = new EFContext())
+         {
+           return context.Fields.Where(x=>x.formId==id).ToList();           
          }
       }
    }

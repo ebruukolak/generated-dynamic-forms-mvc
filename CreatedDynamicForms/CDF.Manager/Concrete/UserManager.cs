@@ -18,5 +18,10 @@ namespace CDF.Manager.Concrete
       {
          return userDAL.GetUser( username,  password);
       }
+
+      public User GetUserById(int id)
+      {
+         return userDAL.GetUser(id);
+      }
    }
 }

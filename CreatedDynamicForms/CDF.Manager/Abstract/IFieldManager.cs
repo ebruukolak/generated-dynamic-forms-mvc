@@ -8,5 +8,6 @@ namespace CDF.Manager.Abstract
    public interface  IFieldManager
    {
       void AddField(Field field);
+      List<Field> GetByFromId(int id);
    }
 }

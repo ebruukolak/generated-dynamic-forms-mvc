@@ -16,5 +16,12 @@ namespace CDF.DAL.Concrete
             return context.Users.FirstOrDefault(x => x.username == username && x.password==password);
          }
       }
+      public User GetUser(int id)
+      {
+         using (var context = new EFContext())
+         {
+            return context.Users.FirstOrDefault(x => x.Id == id);
+         }
+      }
    }
 }

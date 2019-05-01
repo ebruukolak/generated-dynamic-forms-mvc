@@ -8,5 +8,6 @@ namespace CDF.Manager.Abstract
    public interface IUserManager
    {
       User GetUser(string username,string password);
+      User GetUserById(int id);
    }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CDF.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -16,5 +17,6 @@ namespace CDF.Web.Models
       public DateTime createdAt { get; set; }
       [Display(Name = "Created User")]
       public string createdBy { get; set; }
+      public List<Field> fields { get; set; }
    }
 }

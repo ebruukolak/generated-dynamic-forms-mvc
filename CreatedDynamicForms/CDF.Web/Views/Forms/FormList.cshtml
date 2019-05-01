@@ -9,18 +9,18 @@
 <div class="block-header">
     <h4 class="error-message">@TempData["error"]</h4>
 </div>
-
 <div class="row clearfix">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
+            <br /><br />
+            @Ajax.ActionLink("Create New Form", "CreateForm", null, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "result", InsertionMode = InsertionMode.Replace, OnSuccess = "openPopup" }, new { @class = "btn btn-primary" })<br />
+            <input type="text" name="input_domain_id" class="form-control text-center" placeholder="Domain ID" autofocus required>
+            <button type="button" class="btn btn-primary btn-sm" onclick="location.href='@Url.Action("VerifyLogin", "LdapLoginVerify")'">Small button</button>
+            <br /><br /> <br />
+        </div>
+        <div class="card">
             <div class="body">
 
-                <div class="form-actions">
-                    <br /> <br />
-                    <a href="@Url.Action("Create","Forms")" class="btn btn-primary">Create New Form</a>
-                    <br />
-                    <br /> <br /> 
-                </div>
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                         <tr>
@@ -35,7 +35,7 @@
                         {
                             <tr>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.name)
+                                    <a href="#" data-id="@item.Id" class="frm btn btn-success universalWidth">@Html.DisplayFor(modelItem => item.name)</a>
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.description)
@@ -48,8 +48,7 @@
                                 </td>
 
                                 <td>
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-md btn-teal" }) 
-                                                                          
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-md btn-teal" })
                                 </td>
                             </tr>
                         }
@@ -62,3 +61,19 @@
         </div>
     </div>
 </div>
+@section Scripts{
+    <script type="text/javascript">
+        function openPopup() {
+            $("#result").dialog("open");
+        }
+
+        var baseUrl = '@Url.Action("Forms/GetForm")';
+            $('.frm').click(function(){
+                var id = $(this).data('id');
+                //var quantity = $(this).closest('tr').find('.quantity').val();
+                location.href = baseUrl + '?id=' + id;
+            });
+    </script>
+}
+
+
