@@ -36,7 +36,7 @@ namespace CDF.Web.Controllers
             {
                Session["UserID"] = user.Id;
                Session["Username"] = user.username;
-               return RedirectToAction("Index", "Home");
+               return RedirectToAction("FormList", "Forms");
             }
          }
          return View(userViewModel);

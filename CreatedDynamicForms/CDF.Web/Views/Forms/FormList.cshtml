@@ -1,0 +1,64 @@
+﻿@model IEnumerable<CDF.Entities.Form>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml"; ;
+}
+
+<!DOCTYPE html>
+
+<div class="block-header">
+    <h4 class="error-message">@TempData["error"]</h4>
+</div>
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="body">
+
+                <div class="form-actions">
+                    <br /> <br />
+                    <a href="@Url.Action("Create","Forms")" class="btn btn-primary">Create New Form</a>
+                    <br />
+                    <br /> <br /> 
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Created User</th>
+                            <th>Created Date</th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.description)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.createdBy)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.createdAt)
+                                </td>
+
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-md btn-teal" }) 
+                                                                          
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

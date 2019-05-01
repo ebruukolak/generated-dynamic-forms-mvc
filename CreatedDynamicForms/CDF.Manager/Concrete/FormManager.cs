@@ -1,4 +1,5 @@
-﻿using CDF.Entities;
+﻿using CDF.DAL.Abstract;
+using CDF.Entities;
 using CDF.Manager.Abstract;
 using System;
 using System.Collections.Generic;
@@ -8,24 +9,29 @@ namespace CDF.Manager.Concrete
 {
    public class FormManager : IFormManager
    {
+      IFormDAL formDAL;
+      public FormManager(IFormDAL formDAL)
+      {
+         this.formDAL = formDAL;
+      }
       public Form AddForm(Form form)
       {
-         throw new NotImplementedException();
+        return formDAL.AddForm(form);
       }
 
       public Form GetById(int id)
       {
-         throw new NotImplementedException();
+         return formDAL.GetById(id);
       }
 
       public Form GetByName(string name)
       {
-         throw new NotImplementedException();
+         return formDAL.GetByName(name);
       }
 
       public List<Form> GetForms()
       {
-         throw new NotImplementedException();
+         return formDAL.GetForms();
       }
    }
 }
