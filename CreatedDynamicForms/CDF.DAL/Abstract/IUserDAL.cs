@@ -7,6 +7,6 @@ namespace CDF.DAL.Abstract
 {
    public interface IUserDAL
    {
-      User GetUser(User user);
+      User GetUser(string username, string password);
    }
 }

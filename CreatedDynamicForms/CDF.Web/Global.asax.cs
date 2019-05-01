@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CDF.Web.DependencyInversion;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,6 +17,7 @@ namespace CDF.Web
          FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
          RouteConfig.RegisterRoutes(RouteTable.Routes);
          BundleConfig.RegisterBundles(BundleTable.Bundles);
+         ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory());
       }
    }
 }

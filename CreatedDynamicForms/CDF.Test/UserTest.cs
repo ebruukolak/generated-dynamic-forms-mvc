@@ -15,13 +15,7 @@ namespace CDF.Test
       [TestMethod]
       public void get_user()
       {
-         User u = new User
-         {
-            Id=1,
-            username = "ebru",
-            password = "12345"
-         };
-         User user = userDAL.GetUser(u);
+         User user = userDAL.GetUser("ebru", "12345");
          Assert.IsTrue(user != null);
       }
    }

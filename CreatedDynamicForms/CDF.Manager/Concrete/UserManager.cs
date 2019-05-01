@@ -14,9 +14,9 @@ namespace CDF.Manager.Concrete
       {
          this.userDAL = userDAL;
       }
-      public User GetUser(User user)
+      public User GetUser(string username, string password)
       {
-         return userDAL.GetUser(user);
+         return userDAL.GetUser( username,  password);
       }
    }
 }

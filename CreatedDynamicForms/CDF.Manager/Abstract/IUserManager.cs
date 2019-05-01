@@ -7,6 +7,6 @@ namespace CDF.Manager.Abstract
 {
    public interface IUserManager
    {
-      User GetUser(User user);
+      User GetUser(string username,string password);
    }
 }
