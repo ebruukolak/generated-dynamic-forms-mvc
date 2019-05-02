@@ -158,12 +158,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FieldController.cs" />
     <Compile Include="Controllers\FormsController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DependencyInversion\NinjectControllerFactory.cs" />
+    <Compile Include="Enums\enmDataType.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\FieldViewModel.cs" />
     <Compile Include="Models\FormViewModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -208,13 +210,11 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Forms\FormList.cshtml" />
     <Content Include="Views\Forms\CreateForm.cshtml" />
     <Content Include="Views\Forms\GetForm.cshtml" />
+    <Content Include="Views\Field\AddField.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

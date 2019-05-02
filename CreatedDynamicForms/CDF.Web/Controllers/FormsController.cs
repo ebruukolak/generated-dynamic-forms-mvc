@@ -35,6 +35,7 @@ namespace CDF.Web.Controllers
                formViewModels.Add(
                   new FormViewModel
                   {
+                     Id=item.Id,
                      description = item.description,
                      name = item.name,
                      createdAt = item.createdAt,
@@ -57,7 +58,8 @@ namespace CDF.Web.Controllers
       [HttpPost]
       public ActionResult CreateForm(FormViewModel formViewModel)
       {
-        
+         if (!ModelState.IsValid)
+            return View(formViewModel);
             var form = new Form
             {
                name = formViewModel.name,

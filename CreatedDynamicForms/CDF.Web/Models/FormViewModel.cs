@@ -10,12 +10,12 @@ namespace CDF.Web.Models
    public class FormViewModel
    {
       public int Id { get; set; }
+      [Required(ErrorMessage = "Please,enter form's name")]
       public string name { get; set; }
-   
       public string description { get; set; }
-     
+
       public DateTime createdAt { get; set; }
-      
+
       public string createdBy { get; set; }
       //public List<Field> fields { get; set; }
    }

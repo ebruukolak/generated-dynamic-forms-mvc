@@ -45,9 +45,10 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.createdAt)
                                     </td>
-
                                     <td>
-                                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-md btn-teal" })
+                                        <a href="#" data-id="@item.Id" class="frm btn btn-success universalWidth">Add Field</a>
+
+                                        @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-md btn-teal" })*@
                                     </td>
                                 </tr>
                             }
@@ -66,12 +67,19 @@
             $("#result").dialog("open");
         }
 
-        var baseUrl = '@Url.Action("/GetForm")';
+        @*var baseUrl = '@Url.Action("/Field/AddField")';
             $('.frm').click(function(){
                 var id = $(this).data('id');
                 //var quantity = $(this).closest('tr').find('.quantity').val();
-                location.href = baseUrl + '?id=' + id;
-        });
+                location.href = '/Field/AddField?id=' + id;
+        });*@
+
+        $('.frm').click( function () {
+            var id = $(this).data('id');
+            var url = "/Field/AddField?id=" + id;
+            window.location.href = url;
+        })
+
         $(document).ready(function () {
             $('#myTable').DataTable();
         });
