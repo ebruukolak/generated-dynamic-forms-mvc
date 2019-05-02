@@ -77,7 +77,7 @@ namespace CDF.Web.Controllers
          if (id != null)
          {
             var form = formManager.GetById((int)id);
-            var formFields = fieldManager.GetByFromId((int)id);
+            var formFields = fieldManager.GetByFormId((int)id);
             var user = userManager.GetUserById(form.createdBy);
             return View(new FormViewModel
             {

@@ -20,9 +20,9 @@ namespace CDF.Manager.Concrete
 
       }
 
-      public List<Field> GetByFromId(int id)
+      public List<Field> GetByFormId(int id)
       {
-         return fieldDAL.GetByFromId(id);
+         return fieldDAL.GetByFormId(id);
       }
    }
 }

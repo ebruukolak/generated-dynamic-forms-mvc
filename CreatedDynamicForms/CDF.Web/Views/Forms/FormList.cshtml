@@ -45,7 +45,7 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.createdBy)
                                     </td>
-                                    <td>    
+                                    <td>
                                         @Html.DisplayFor(modelItem => item.createdAt)
                                     </td>
                                     <td>
@@ -76,8 +76,11 @@
         var baseUrl = '@Url.Action("/GetForm")';
         $(document).ready(function () {
             var table = $('#myTable').DataTable();
-
+            
             $('#myTable tbody').on('click', 'td', function () {
+                if ($(this).index() == 5) {
+                    return;
+                }
                 var id = $('#item_Id').val();
                 location.href = baseUrl + '?id=' + id;
             });

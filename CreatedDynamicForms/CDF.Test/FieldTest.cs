@@ -9,7 +9,7 @@ namespace CDF.Test
    [TestClass]
    public class FieldTest
    {
-      IFieldDAL fieldDAL=new FieldDAL();
+      IFieldDAL fieldDAL = new FieldDAL();
       [TestMethod]
       public void shoul_add_field()
       {
@@ -19,7 +19,13 @@ namespace CDF.Test
             required = true,
             dataType = "STRING"
          };
-         var f=fieldDAL.AddField(field);
+         var f = fieldDAL.AddField(field);
+         Assert.IsNotNull(f);
+      }
+      [TestMethod]
+      public void shoul_get_field_by_form_id()
+      {
+         var f = fieldDAL.GetByFormId(1);
          Assert.IsNotNull(f);
       }
    }

@@ -8,6 +8,6 @@ namespace CDF.DAL.Abstract
    public interface IFieldDAL
    {
       Field AddField(Field field);
-      List<Field> GetByFromId(int id);
+      List<Field> GetByFormId(int id);
    }
 }

@@ -13,9 +13,14 @@ namespace CDF.Test
    {
       IUserDAL userDAL = new UserDAL();
       [TestMethod]
-      public void get_user()
+      public void should_get_user()
       {
          User user = userDAL.GetUser("ebru", "12345");
+         Assert.IsTrue(user != null);
+      }
+      public void should_get_user_by_id()
+      {
+         User user = userDAL.GetUser(1);
          Assert.IsTrue(user != null);
       }
    }

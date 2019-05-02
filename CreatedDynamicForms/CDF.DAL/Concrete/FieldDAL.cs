@@ -19,7 +19,7 @@ namespace CDF.DAL.Concrete
          }
       }
 
-      public List<Field> GetByFromId(int id)
+      public List<Field> GetByFormId(int id)
       {
          using (var context = new EFContext())
          {
