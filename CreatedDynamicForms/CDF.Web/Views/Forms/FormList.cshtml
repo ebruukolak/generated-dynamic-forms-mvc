@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CDF.Entities.Form>
+﻿@model IEnumerable<CDF.Web.Models.FormViewModel>
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml"; ;
@@ -18,7 +18,6 @@
         </div>
         <div class="card">
             <div class="body">
-
                 <div class="table-responsive">
                     <table id="myTable" class="table table-bordered table-striped table-hover js-basic-example dataTable">
                         <thead>
@@ -35,7 +34,7 @@
                             {
                                 <tr>
                                     <td>
-                                        <a href="#" data-id="@item.Id" class="frm btn btn-success universalWidth">@Html.DisplayFor(modelItem => item.name)</a>
+                                       @Html.DisplayFor(modelItem => item.name)
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.description)

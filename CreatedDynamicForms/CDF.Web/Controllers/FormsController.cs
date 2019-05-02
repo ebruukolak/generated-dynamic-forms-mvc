@@ -21,25 +21,43 @@ namespace CDF.Web.Controllers
          this.fieldManager = fieldManager;
          this.userManager = userManager;
       }
+
       public ActionResult FormList()
       {
          if (Session["UserID"] != null)
          {
-            return View(formManager.GetForms());
+            var forms = formManager.GetForms();
+            List<FormViewModel> formViewModels = new List<FormViewModel>();
+
+            foreach (var item in forms)
+            {
+               var user = userManager.GetUserById(item.createdBy);
+               formViewModels.Add(
+                  new FormViewModel
+                  {
+                     description = item.description,
+                     name = item.name,
+                     createdAt = item.createdAt,
+                     createdBy = user.name
+                  });
+            }
+            return View(formViewModels);
          }
          return RedirectToAction("Login", "Account");
-
       }
 
       public ActionResult CreateForm()
       {
-         return View();
+         if (Session["UserID"] != null)
+         {
+            return View();
+         }
+         return RedirectToAction("Login", "Account");
       }
       [HttpPost]
       public ActionResult CreateForm(FormViewModel formViewModel)
       {
-         if (ModelState.IsValid)
-         {
+        
             var form = new Form
             {
                name = formViewModel.name,
@@ -47,29 +65,11 @@ namespace CDF.Web.Controllers
                createdBy = (int)Session["UserID"],
                createdAt = DateTime.Now
             };
+            var user = userManager.GetUserById((int)Session["UserID"]);
             var newForm = formManager.AddForm(form);
-            if (newForm != null)
-            {
-               foreach (var item in formViewModel.fields)
-               {
-                  fieldManager.AddField(new Field
-                  {
-                     name = item.name,
-                     dataType = item.dataType,
-                     formId = newForm.Id
-                  });
-               }
-            }
-
-         }
-         else
-         {
-            TempData["error"] = "There is some error";
-         }
-
-         return View(formViewModel);
-
+            return RedirectToAction("FormList");  
       }
+
       public ActionResult GetFormByName(string name)
       {
          if (name != null)
@@ -79,6 +79,7 @@ namespace CDF.Web.Controllers
          }
          return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
       }
+
       public ActionResult GetForm(int? id)
       {
          if (id != null)
@@ -86,12 +87,12 @@ namespace CDF.Web.Controllers
             var form = formManager.GetById((int)id);
             var formFields = fieldManager.GetByFromId((int)id);
             var user = userManager.GetUserById(form.createdBy);
-            return View(new FormViewModel {
-               name=form.name,
-               description=form.description,
-               createdAt=form.createdAt,
-               createdBy=user.name,
-               fields=formFields
+            return View(new FormViewModel
+            {
+               name = form.name,
+               description = form.description,
+               createdAt = form.createdAt,
+               createdBy = user.name
             });
          }
          return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
