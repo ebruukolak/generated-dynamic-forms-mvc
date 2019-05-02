@@ -5,8 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<table class="table">
-    <tr>
+@*<tr>
         <th>
             @Html.DisplayNameFor(model => model.name)
         </th>
@@ -21,27 +20,79 @@
         </th>
         <th></th>
     </tr>
-
-@foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.name)
+            @Html.EditorFor(model => model.name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.description)
+            @Html.EditorFor(model => model.description)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.createdAt)
+            @Html.EditorFor(model => model.createdAt)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.createdBy)
+            @Html.EditorFor(model => model.createdBy)
         </td>
-        @*<td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>*@
-    </tr>
-}
+        <td></td>
+    </tr>*@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/style.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="row clearfix">
+        <div class="">
+            <div class="card">
 
-</table>
+                <div class="body">
+                    @foreach (var item in Model.fields)
+                    {
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="body">
+                            <div class="input-group">
+                                @if (item.required)
+                                {
+                                    if (item.dataType == "STRING")
+                                    {
+                                        @Html.DisplayFor(modelItem => item.name)
+                                        <input type="text" id="name" value="" />
+                                    }
+                                    if (item.dataType == "NUMBER")
+                                    {
+                                        @Html.DisplayFor(modelItem => item.name)
+                                        <input type="number" id="num" value="" />
+                                    }
+                                    @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                                }
+                                else
+                                {
+                                    if (item.dataType == "STRING")
+                                    {
+                                        @Html.DisplayFor(modelItem => item.name)
+                                        <input type="text" id="name" value="" />
+
+                                    }
+                                    if (item.dataType == "NUMBER")
+                                    {
+                                        @Html.DisplayFor(modelItem => item.name)
+                                        <input type="number" id="num" value="" />
+                                    }
+
+                                }
+                            </div>
+                        </div>
+                    }
+                    <div class="form-group">
+                        <div>
+                            <a href="#" data-id="model-id" class="addfld btn btn-success universalWidth">Create</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

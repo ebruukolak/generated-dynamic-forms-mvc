@@ -31,6 +31,7 @@ namespace CDF.Web.Controllers
       {
          if (!ModelState.IsValid)
             return View(field);
+         field.formId = Convert.ToInt32(Request.QueryString["id"]); 
          fieldManager.AddField(new Field {
             name=field.name,
             dataType=field.dataType,

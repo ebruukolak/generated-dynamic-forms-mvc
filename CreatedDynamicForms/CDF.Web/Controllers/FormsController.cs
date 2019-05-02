@@ -35,7 +35,7 @@ namespace CDF.Web.Controllers
                formViewModels.Add(
                   new FormViewModel
                   {
-                     Id=item.Id,
+                     Id = item.Id,
                      description = item.description,
                      name = item.name,
                      createdAt = item.createdAt,
@@ -60,26 +60,16 @@ namespace CDF.Web.Controllers
       {
          if (!ModelState.IsValid)
             return View(formViewModel);
-            var form = new Form
-            {
-               name = formViewModel.name,
-               description = formViewModel.description,
-               createdBy = (int)Session["UserID"],
-               createdAt = DateTime.Now
-            };
-            var user = userManager.GetUserById((int)Session["UserID"]);
-            var newForm = formManager.AddForm(form);
-            return RedirectToAction("FormList");  
-      }
-
-      public ActionResult GetFormByName(string name)
-      {
-         if (name != null)
+         var form = new Form
          {
-            var form = formManager.GetByName(name);
-            return View(form);
-         }
-         return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            name = formViewModel.name,
+            description = formViewModel.description,
+            createdBy = (int)Session["UserID"],
+            createdAt = DateTime.Now
+         };
+         var user = userManager.GetUserById((int)Session["UserID"]);
+         var newForm = formManager.AddForm(form);
+         return RedirectToAction("FormList");
       }
 
       public ActionResult GetForm(int? id)
@@ -94,7 +84,8 @@ namespace CDF.Web.Controllers
                name = form.name,
                description = form.description,
                createdAt = form.createdAt,
-               createdBy = user.name
+               createdBy = user.name,
+               fields = formFields
             });
          }
          return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

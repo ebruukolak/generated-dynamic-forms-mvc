@@ -17,6 +17,6 @@ namespace CDF.Web.Models
       public DateTime createdAt { get; set; }
 
       public string createdBy { get; set; }
-      //public List<Field> fields { get; set; }
+      public List<Field> fields { get; set; }
    }
 }

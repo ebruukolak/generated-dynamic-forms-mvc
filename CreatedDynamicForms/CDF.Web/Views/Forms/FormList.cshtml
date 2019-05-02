@@ -22,6 +22,7 @@
                     <table id="myTable" class="table table-bordered table-striped table-hover js-basic-example dataTable">
                         <thead>
                             <tr>
+
                                 <th>Name</th>
                                 <th>Description</th>
                                 <th>Created User</th>
@@ -32,9 +33,11 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
+
                                 <tr>
+                                    @Html.HiddenFor(modelItem => item.Id)
                                     <td>
-                                       @Html.DisplayFor(modelItem => item.name)
+                                        @Html.DisplayFor(modelItem => item.name)
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.description)
@@ -42,13 +45,11 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.createdBy)
                                     </td>
-                                    <td>
+                                    <td>    
                                         @Html.DisplayFor(modelItem => item.createdAt)
                                     </td>
                                     <td>
-                                        <a href="#" data-id="@item.Id" class="frm btn btn-success universalWidth">Add Field</a>
-
-                                        @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-md btn-teal" })*@
+                                        <a href="#" data-id="@item.Id" class="addfld btn btn-success universalWidth">Add Field</a>
                                     </td>
                                 </tr>
                             }
@@ -66,23 +67,22 @@
         function openPopup() {
             $("#result").dialog("open");
         }
-
-        @*var baseUrl = '@Url.Action("/Field/AddField")';
-            $('.frm').click(function(){
-                var id = $(this).data('id');
-                //var quantity = $(this).closest('tr').find('.quantity').val();
-                location.href = '/Field/AddField?id=' + id;
-        });*@
-
-        $('.frm').click( function () {
+        $('.addfld').click(function () {
             var id = $(this).data('id');
             var url = "/Field/AddField?id=" + id;
             window.location.href = url;
         })
 
+        var baseUrl = '@Url.Action("/GetForm")';
         $(document).ready(function () {
-            $('#myTable').DataTable();
+            var table = $('#myTable').DataTable();
+
+            $('#myTable tbody').on('click', 'td', function () {
+                var id = $('#item_Id').val();
+                location.href = baseUrl + '?id=' + id;
+            });
         });
+
     </script>
 }
 
