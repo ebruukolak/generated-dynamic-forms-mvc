@@ -14,45 +14,45 @@
         <div class="card">
             <br /><br />
             @Ajax.ActionLink("Create New Form", "CreateForm", null, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "result", InsertionMode = InsertionMode.Replace, OnSuccess = "openPopup" }, new { @class = "btn btn-primary" })<br />
-            <input type="text" name="input_domain_id" class="form-control text-center" placeholder="Domain ID" autofocus required>
-            <button type="button" class="btn btn-primary btn-sm" onclick="location.href='@Url.Action("VerifyLogin", "LdapLoginVerify")'">Small button</button>
             <br /><br /> <br />
         </div>
         <div class="card">
             <div class="body">
 
                 <div class="table-responsive">
-                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
-                        <tr>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Created User</th>
-                            <th>Created Date</th>
-                            <th></th>
-                        </tr>
-
-                        @foreach (var item in Model)
-                        {
+                    <table id="myTable" class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                        <thead>
                             <tr>
-                                <td>
-                                    <a href="#" data-id="@item.Id" class="frm btn btn-success universalWidth">@Html.DisplayFor(modelItem => item.name)</a>
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.description)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.createdBy)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.createdAt)
-                                </td>
-
-                                <td>
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-md btn-teal" })
-                                </td>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Created User</th>
+                                <th>Created Date</th>
+                                <th></th>
                             </tr>
-                        }
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <a href="#" data-id="@item.Id" class="frm btn btn-success universalWidth">@Html.DisplayFor(modelItem => item.name)</a>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.description)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.createdBy)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.createdAt)
+                                    </td>
 
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-md btn-teal" })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
                     </table>
 
                 </div>
@@ -67,12 +67,15 @@
             $("#result").dialog("open");
         }
 
-        var baseUrl = '@Url.Action("Forms/GetForm")';
+        var baseUrl = '@Url.Action("/GetForm")';
             $('.frm').click(function(){
                 var id = $(this).data('id');
                 //var quantity = $(this).closest('tr').find('.quantity').val();
                 location.href = baseUrl + '?id=' + id;
-            });
+        });
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
     </script>
 }
 

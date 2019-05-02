@@ -91,7 +91,7 @@ namespace CDF.Web.Controllers
                description=form.description,
                createdAt=form.createdAt,
                createdBy=user.name,
-               fields= formFields
+               fields=formFields
             });
          }
          return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

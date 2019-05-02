@@ -25,12 +25,16 @@
         @RenderBody()
         <hr />
         @*<footer>
-            <p>&copy; @DateTime.Now.Year - Generated Form</p>
-        </footer>*@
+                <p>&copy; @DateTime.Now.Year - Generated Form</p>
+            </footer>*@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    @*<link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" type="text/css" />
+        <link href="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" type="text/javascript" />*@
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
 </body>
 </html>

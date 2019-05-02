@@ -60,6 +60,11 @@
     <Compile Include="Concrete\FieldDAL.cs" />
     <Compile Include="Concrete\FormDAL.cs" />
     <Compile Include="Concrete\UserDAL.cs" />
+    <Compile Include="Migrations\201904302316586_InitialCreate.cs" />
+    <Compile Include="Migrations\201904302316586_InitialCreate.Designer.cs">
+      <DependentUpon>201904302316586_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -73,6 +78,11 @@
       <Project>{10bd2045-1cc6-41e4-95d1-c9348f8efa5d}</Project>
       <Name>CDF.Entities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201904302316586_InitialCreate.resx">
+      <DependentUpon>201904302316586_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
